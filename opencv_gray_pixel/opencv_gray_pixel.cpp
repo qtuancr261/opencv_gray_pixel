@@ -6,7 +6,7 @@ using namespace cv;
 using namespace std;
 int main(int argc, char *argv[])
 {
-	Mat input_img, output_img;
+	Mat input_img;
 	input_img = imread(argv[1], IMREAD_GRAYSCALE);
 	if (input_img.empty())
 	{

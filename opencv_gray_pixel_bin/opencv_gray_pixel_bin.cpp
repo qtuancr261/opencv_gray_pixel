@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 	{
 		cout << "color bin " << i << ":  " << bin[i] << "/" << numPixels << endl;
 	}
+	//-----------------------------------------------------------------------------------------
 	namedWindow(argv[1], WINDOW_AUTOSIZE);
 	imshow(argv[1], input_img);
 	waitKey();
