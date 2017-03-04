@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 using namespace cv;
 using namespace std;
 int main(int argc, char *argv[])
@@ -11,12 +12,12 @@ int main(int argc, char *argv[])
 	if (input_img.empty())
 	{
 		cerr << "Couldn't open image . Exit program...........";
-		return -1;
+		return 1;
 	}
 	//----------------------------------------------------------------------------------------
 	vector<vector<uchar>> pixel(input_img.rows, vector<uchar>(input_img.cols));
 	vector<int> bin(8, 0);
-	int numPixels{ input_img.cols * input_img.rows };
+	int totalNumPixels{ input_img.cols * input_img.rows };
 	for (int i{}; i < input_img.rows; i++)
 		for (int j{}; j < input_img.cols; j++)
 		{
@@ -25,11 +26,12 @@ int main(int argc, char *argv[])
 		}
 	for (int i{}; i < 8; i++)
 	{
-		cout << "color bin " << i << ":  " << bin[i] << "/" << numPixels << endl;
+		cout << "color bin " << i << ":  " << bin[i] << "/" << totalNumPixels << endl;
 	}
 	//-----------------------------------------------------------------------------------------
 	namedWindow(argv[1], WINDOW_AUTOSIZE);
 	imshow(argv[1], input_img);
 	waitKey();
+	system("cls"); // clear screen after displaying 
 	return 0;
 }
